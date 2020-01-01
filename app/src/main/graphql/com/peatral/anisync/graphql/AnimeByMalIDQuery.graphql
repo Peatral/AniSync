@@ -1,0 +1,10 @@
+query AnimeByMalIDQuery($idMal: Int!) {
+  Media (idMal: $idMal, type: ANIME) {
+    id
+    title {
+      romaji
+      english
+      native
+    }
+  }
+}

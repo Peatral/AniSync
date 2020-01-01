@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">AniSync</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_anilist">Username AniList</string>
+    <string name="nav_header_mal">Username MAL</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_clearSyncHistory">Clear History</string>
+    <string name="snack_clearedHistory">Cleared History!</string>
+    <string name="action_clearIgnored">Clear Ignored</string>
+    <string name="snack_clearedIgnored">Cleared Ignored!</string>
+
+    <string name="tab_synced">Synced</string>
+    <string name="tab_failed">Failed</string>
+    <string name="tab_ignored">Ignored</string>
+
+    <string name="menu_login">AniList Login</string>
+    <string name="menu_logout">AniList Logout</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_webview_settings">Browser</string>
+
+    <!-- Preference Titles -->
+    <string name="visuals_header">Visuals</string>
+    <string name="sync_header">Sync</string>
+    <string name="about_header">About</string>
+
+    <!-- Visual Preferences -->
+    <string name="theme_title">Night Mode</string>
+
+    <!-- Account Preferences -->
+    <string name="mal_title">MAL Username</string>
+    <string name="anilist_title">AniList Account</string>
+    <string name="anilist_summary">Click to Login</string>
+    <string name="anilist_logged_in">Logged in as </string>
+    <string name="mal_use_anilist_title">Use Anilist Username</string>
+
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync lists periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Notificattions & Quick Settings -->
+    <string name="progress_channel_name">Progress</string>
+    <string name="progress_channel_desc">Shows Progress of the Sync</string>
+    <string name="tile_label">Anime Sync</string>
+    <string name="service_active">Syncing</string>
+    <string name="service_inactive">Not Syncing</string>
+
+    <string name="notification_text_progress">%1$df/%2$ds/%3$dt</string>
+    <string name="notification_text_complete">Sync complete, %1$d failed and %2$d synced.</string>
+
+    <string name="sync_started">Sync Started</string>
+    <string name="sync_stopped">Sync Stopped</string>
+    <string name="sync_error">Sync Error</string>
+
+
+    <string name="logged_in">Login successful!</string>
+    <string name="logout">Logout</string>
+
+    <string name="dialog_logout">Are you sure you want to logout?</string>
+    <string name="dialog_ignore_anime">Are you sure that \"%1$s\" should be ignored?</string>
+    <string name="dialog_not_ignore_anime">Are you sure that \"%1$s\" should not be ignored?</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
+
+    <string name="status_watching">Watching</string>
+    <string name="status_onhold">On Hold</string>
+    <string name="status_dropped">Dropped</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_plantowatch">Planned</string>
+
+    <string name="score">Score: %1$d/10</string>
+    <string name="progress">Progress: %1$d</string>
+
+</resources>

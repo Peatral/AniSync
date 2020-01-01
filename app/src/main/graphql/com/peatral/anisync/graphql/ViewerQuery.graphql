@@ -1,0 +1,9 @@
+query ViewerQuery{
+    Viewer{
+        name
+        id
+        avatar {
+            large
+        }
+    }
+}

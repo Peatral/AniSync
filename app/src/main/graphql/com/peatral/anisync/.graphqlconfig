@@ -1,0 +1,18 @@
+{
+  "name": "Anilist Schema",
+  "schemaPath": "schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://graphql.anilist.co",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjkzOWU0MTk3OTM4ZGFhYTJkODdmY2Y2OTFjYzVlOGIzZDY5MWE5ZmYxZmE4MDU2NTA3Y2RmNTMxN2Y3MDJkMWE4MDEyNDZkY2FjZjcxNTM1In0.eyJhdWQiOiIyMzgzIiwianRpIjoiOTM5ZTQxOTc5MzhkYWFhMmQ4N2ZjZjY5MWNjNWU4YjNkNjkxYTlmZjFmYTgwNTY1MDdjZGY1MzE3ZjcwMmQxYTgwMTI0NmRjYWNmNzE1MzUiLCJpYXQiOjE1NjUxMTQ0MzYsIm5iZiI6MTU2NTExNDQzNiwiZXhwIjoxNTk2NzM2ODM2LCJzdWIiOiIyOTE2MTUiLCJzY29wZXMiOltdfQ.JMtSM8tEaohh_eva8IyiY5rLP5sYD-3dIp2-Df8yhbGxLPNi1OIQE_PrjC2Yiw5eGe5Sj2T3U6tWShsMzm5KidMd3B9fT0IrxWvzvOQc04_aU3OYaSzICd2woUYCLIm_iBb74TiKpwSP3BeWt3ilUk21JVIX0z012_S61yJoKsI4NGq3yOcfDJrNw3uAB0_edFzUpKnmlH1Qw1uMJjRTjZKo3tUzYzml1rEA03V8ufuVaBtP8m5oZk4HbWKmstHY08XdtVETeJVBUSTV3Naboz5cK9xzVWtw1aZMtr6hKaQwloN6VA-P0oTLZhlNfPJKtiMUMka0Grv5vgTed7UgNWwq3qJFx9cUSFb_rdb1LJitwW1C1RNJBREPNWi2TdSYvYD9tHZu0DbxoUZrH1BMcLQewO0C5-qVYgftqus7tgFADMbEMksXFU9NVg1AJRyN-WNBfDNJ-_IXP9SLPieS5QZIC4m3tVtn7dFaqd-dBbVamQHvI91sRvHigR5nEsl2zybvSNFiGmHzru71IO-6BLVgARlj9rjx3JihKKGGLH-xVLs6L19uzYx-As3vH9ko9kWKx-VoqJB1EygPT58klz5xP2y8LURay1mW24krwLqA56NMAhfb-gxzvt0wtGapz5qiwi4THvmUhxJ8poxw8eV2om7MQVrB_cblkyHkzno",
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+query UserAnimeListQuery($userid: Int) {
+    MediaListCollection(userId: $userid, type: ANIME) {
+        lists {
+            entries {
+                status
+                score(format: POINT_10_DECIMAL)
+                progress
+                media {
+                    idMal
+                    title{
+                        romaji
+                        english
+                    }
+                }
+            }
+        }
+    }
+}
