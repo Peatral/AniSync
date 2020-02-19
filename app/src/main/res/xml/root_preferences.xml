@@ -1,61 +1,50 @@
-<!--
-  ~ Copyright 2018 The app Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/visuals_header">
 
         <SwitchPreference
-            app:defaultValue="false"
+            app:defaultValue="true"
             app:key="nightMode"
             app:title="@string/theme_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="@string/accounts_header">
 
         <Preference
             app:key="userAniList"
             app:title="@string/anilist_title"
             app:summary="@string/anilist_summary"/>
 
-        <SwitchPreferenceCompat
+        <SwitchPreference
             android:defaultValue="false"
             android:key="mal_use_anilist_name"
             android:title="@string/mal_use_anilist_title"
-            android:disableDependentsState="true"/>
+            android:disableDependentsState="true"
+            android:summaryOff="@string/mal_use_anilist_summary_off"
+            android:summaryOn="@string/mal_use_anilist_summary_on"/>
 
         <EditTextPreference
             app:dependency="mal_use_anilist_name"
             app:key="malUsername"
-            app:title="@string/mal_title"
-            app:useSimpleSummaryProvider="true" />
+            app:title="@string/mal_title"/>
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/sync_header">
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <SwitchPreference
+            app:key="notification"
+            app:title="@string/notification_pref"
+            app:defaultValue="true"/>
+
+        <ListPreference
+            app:key="periodic_sync"
+            app:title="@string/sync_period_title"
+            app:entries="@array/sync_period_entries"
+            app:entryValues="@array/sync_period_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="none"/>
 
     </PreferenceCategory>
 

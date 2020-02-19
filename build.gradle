@@ -4,12 +4,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
-        classpath 'com.apollographql.apollo:apollo-gradle-plugin:1.2.0-SNAPSHOT'
-
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 

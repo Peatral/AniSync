@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:cardElevation="@dimen/cardview_default_elevation"
     app:cardMaxElevation="@dimen/cardview_default_elevation"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,11 +22,23 @@
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
             android:contentDescription="Cover"
+            android:foregroundTint="#00FFFFFF"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/anime_cover" />
+
+        <ImageView
+            android:id="@+id/list_item_check_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/list_item_anime_image"
+            app:layout_constraintEnd_toEndOf="@+id/list_item_anime_image"
+            app:layout_constraintStart_toStartOf="@+id/list_item_anime_image"
+            app:layout_constraintTop_toTopOf="@+id/list_item_anime_image"
+            app:srcCompat="@drawable/ic_check"
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/list_item_anime_score"

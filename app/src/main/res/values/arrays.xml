@@ -1,12 +1,22 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <!-- Sync Period Preference -->
+    <string-array name="sync_period_entries">
+        <item>No periodic sync</item>
+        <item>Every 15 Minutes</item>
+        <item>Every 30 Minutes</item>
+        <item>Hourly</item>
+        <item>Every 6 Hours</item>
+        <item>Daily</item>
+        <item>Weekly</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="sync_period_values">
+        <item>none</item>
+        <item>15_min</item>
+        <item>30_min</item>
+        <item>hourly</item>
+        <item>6_hour</item>
+        <item>daily</item>
+        <item>weekly</item>
     </string-array>
 </resources>

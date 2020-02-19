@@ -1,15 +1,11 @@
 package com.peatral.anisync.clients;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 
 import com.peatral.anisync.App;
 import com.peatral.anisync.R;
@@ -17,11 +13,8 @@ import com.peatral.anisync.activities.WebViewActivity;
 
 public class AnilistClient {
     public static final String clientID = "2383";
-    public static final String clientSecret = "msmgJsW9hN8nSVgzfJuq8qbGW2rsSEjzSsQZKmno";
-    public static final String redirectURI = "peatral.app://anisync/client";
 
     public static String getAuthCodeLink(){
-        //return "https://anilist.co/api/v2/oauth/authorize?client_id=" + clientID + "&redirect_uri="+ redirectURI + "&response_type=code";
         return "https://anilist.co/api/v2/oauth/authorize?client_id=" + clientID + "&response_type=token";
     }
 

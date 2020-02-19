@@ -14,14 +14,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.apollographql.apollo.ApolloCall;
-import com.apollographql.apollo.api.Response;
-import com.apollographql.apollo.exception.ApolloException;
 import com.peatral.anisync.R;
-import com.peatral.anisync.clients.AnilistApolloClient;
-import com.peatral.anisync.graphql.ViewerQuery;
-
-import org.jetbrains.annotations.NotNull;
+import com.peatral.anisync.graphql.Requests;
+import com.peatral.anisync.graphql.classes.Viewer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +52,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     public void loadUrl(WebView wv, String url) {
-        System.out.println(url);
+
         Uri data = Uri.parse(url);
 
         String scheme = data.getScheme(); // "peatral.app"
@@ -69,40 +64,33 @@ public class WebViewActivity extends AppCompatActivity {
             Map<String, String> pmap = new HashMap<>();
             for (int i = 0; i < params.length; i += 2) pmap.put(params[i], params[i+1]);
 
+
+
             PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit()
                     .putString("access_token", pmap.get("access_token"))
                     .putLong("token_expires_in", Long.valueOf(pmap.get("expires_in")))
                     .apply();
 
-            ViewerQuery viewerQuery = ViewerQuery.builder().build();
-            AnilistApolloClient.getApolloClient(getApplicationContext()).query(viewerQuery).enqueue(new ApolloCall.Callback<ViewerQuery.Data>() {
-                @Override
-                public void onResponse(@NotNull Response<ViewerQuery.Data> response) {
-                    int userId = response.data().Viewer().id();
-                    String userName = response.data().Viewer().name();
-                    String avatarUrl = response.data().Viewer().avatar().large();
-                    Log.d("USER DATA", userName + " (" + userId + ") " + avatarUrl);
+            new Thread(() -> {
+                Viewer viewer = Requests.fetchViewer().getResponse();
+                int userId = viewer.getId();
+                String userName = viewer.getName();
+                String avatarUrl = viewer.getAvatar().getLarge();
 
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    sp.edit()
-                            .putInt("anilistUserId", userId)
-                            .putString("anilistUsername", userName)
-                            .putString("anilistAvatarUrl", avatarUrl)
-                            .apply();
-                    if (sp.getBoolean("mal_use_anilist_name", false))
-                        sp.edit().putString("malUsername", userName).apply();
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                sp.edit()
+                        .putInt("anilistUserId", userId)
+                        .putString("anilistUsername", userName)
+                        .putString("anilistAvatarUrl", avatarUrl)
+                        .apply();
+                if (sp.getBoolean("mal_use_anilist_name", false))
+                    sp.edit().putString("malUsername", userName).apply();
 
-                    runOnUiThread(() -> {
-                        Toast.makeText(getApplicationContext(), getString(R.string.logged_in), Toast.LENGTH_LONG).show();
-                        finish();
-                    });
-                }
-
-                @Override
-                public void onFailure(@NotNull ApolloException e) {
-
-                }
-            });
+                runOnUiThread(() -> {
+                    Toast.makeText(getApplicationContext(), getString(R.string.logged_in), Toast.LENGTH_LONG).show();
+                    finish();
+                });
+            }).start();
         } else {
             wv.loadUrl(url);
         }

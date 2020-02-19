@@ -35,6 +35,7 @@ public class QuickSettingsService
     public void onStartListening() {
         Sync.getInstance().setTileService(this);
         Log.d("QS", "Start listening");
+        updateTile();
     }
 
     /**
@@ -45,8 +46,8 @@ public class QuickSettingsService
         Log.d("QS", "Tile tapped");
 
         Sync.getInstance().setTileService(this);
-        if (!Sync.getInstance().isSyncing()) Sync.getInstance().fetchAnimeList();
-        else Sync.getInstance().reset(Sync.ID_STOPPED);
+        if (!Sync.getInstance().isSyncing()) Sync.getInstance().sync();
+        //else Sync.getInstance().reset(Sync.ID_STOPPED);
         updateTile();
     }
 
