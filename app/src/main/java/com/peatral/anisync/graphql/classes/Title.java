@@ -34,4 +34,10 @@ public class Title {
     public void setNativeTitle(String nativeTitle) {
         this.nativeTitle = nativeTitle;
     }
+
+    public boolean equalsString(String title) {
+        return (romajiTitle != null && romajiTitle.equals(title)) ||
+                (englishTitle != null && englishTitle.equals(title)) ||
+                (nativeTitle != null && nativeTitle.equals(title));
+    }
 }

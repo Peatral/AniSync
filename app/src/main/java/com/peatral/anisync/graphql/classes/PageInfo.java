@@ -42,7 +42,7 @@ public class PageInfo {
         this.total = total;
     }
 
-    public boolean isHasNextPage() {
+    public boolean hasNextPage() {
         return hasNextPage;
     }
 

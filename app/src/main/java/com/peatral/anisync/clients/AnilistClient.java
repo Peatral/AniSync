@@ -11,12 +11,16 @@ import com.peatral.anisync.App;
 import com.peatral.anisync.R;
 import com.peatral.anisync.activities.WebViewActivity;
 
+import okhttp3.OkHttpClient;
+
 public class AnilistClient {
     public static final String clientID = "2383";
 
     public static String getAuthCodeLink(){
         return "https://anilist.co/api/v2/oauth/authorize?client_id=" + clientID + "&response_type=token";
     }
+
+    public static final OkHttpClient client = new OkHttpClient();
 
     public static void logAction(Context c) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(App.getContext());

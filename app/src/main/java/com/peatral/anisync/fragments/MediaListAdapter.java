@@ -23,7 +23,7 @@ import mva3.adapter.ListSection;
 import mva3.adapter.MultiViewAdapter;
 import mva3.adapter.util.Mode;
 
-class MediaListAdapter extends MultiViewAdapter {
+public class MediaListAdapter extends MultiViewAdapter {
 
     private Mode selectionMode;
 
@@ -106,7 +106,7 @@ class MediaListAdapter extends MultiViewAdapter {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
-                deselectAll();
+                deselectAll(false);
                 setSelectionMode(Mode.NONE);
                 stopActionMode();
             }
@@ -191,8 +191,13 @@ class MediaListAdapter extends MultiViewAdapter {
     }
 
     public void deselectAll() {
+        deselectAll(true);
+    }
+
+    //Looks better if title doesnt update when finishing action mode
+    public void deselectAll(boolean updateTitle) {
         clearAllSelections();
-        updateActionModeTitle();
+        if (updateTitle) updateActionModeTitle();
     }
 
     public void reload(List<MediaList> list) {
@@ -213,5 +218,7 @@ class MediaListAdapter extends MultiViewAdapter {
         actionMode.setTitle(App.getContext().getString(R.string.selected, section.getSelectedItems().size()));
     }
 
-
+    public ActionMode getActionMode() {
+        return actionMode;
+    }
 }

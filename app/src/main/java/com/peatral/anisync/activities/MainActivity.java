@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -29,6 +30,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.peatral.anisync.R;
 import com.peatral.anisync.clients.AnilistClient;
+import com.peatral.anisync.fragments.MediaListAdapter;
 import com.peatral.anisync.fragments.MediaListFragment;
 import com.peatral.anisync.graphql.Sync;
 import com.peatral.anisync.graphql.SyncListener;
@@ -72,7 +74,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = findViewById(R.id.tabs);
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout){
+            @Override
+            public void onPageSelected(int position) {
+                int curr = tabLayout.getSelectedTabPosition();
+                Fragment page = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.view_pager + ":" + curr);//mViewPager.getCurrentItem());
+                if (curr != position && page != null) {
+                    MediaListAdapter adapter = ((MediaListFragment)page).getAdapter();
+
+                    if (adapter != null) {
+                        ActionMode actionMode = adapter.getActionMode();
+                        if (actionMode != null) actionMode.finish();
+                    }
+                }
+
+
+                super.onPageSelected(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+
+            }
+        });
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         //tabLayout.setupWithViewPager(mViewPager);
 

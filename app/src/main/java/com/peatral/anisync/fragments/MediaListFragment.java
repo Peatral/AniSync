@@ -102,5 +102,9 @@ public class MediaListFragment extends Fragment implements SharedPreferences.OnS
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         reload();
     }
+
+    public MediaListAdapter getAdapter() {
+        return adapter;
+    }
 }
 
