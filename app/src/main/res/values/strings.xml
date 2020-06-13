@@ -42,11 +42,12 @@
     <string name="mal_use_anilist_summary_off">Don\'t AniList Username for MAL</string>
 
     <!-- Sync Preferences -->
+
+    <string name="notification_pref">Show Sync Notification</string>
+    <string name="toast_pref">Show Sync Toast</string>
     <string name="sync_period_title">Sync lists periodically</string>
 
     <!-- Notificattions & Quick Settings -->
-    <string name="notification_pref">Show Sync Notification</string>
-
     <string name="progress_channel_name">Progress</string>
     <string name="progress_channel_desc">Shows Progress of the Sync</string>
     <string name="tile_label">Anime Sync</string>
