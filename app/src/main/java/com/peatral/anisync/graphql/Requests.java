@@ -224,26 +224,36 @@ public class Requests {
 
     public static List<MediaList> getMalList(String usernameMal) {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://api.jikan.moe/v3/user/" + usernameMal + "/animelist/all")
-                .build();
-        try {
-            Response response = client.newCall(request).execute();
-            String body = response.body().string();
-            Object obj = JSONValue.parse(body);
 
-            List<MediaList> listMal = new ArrayList<>();
+        int offset = 0;
+        boolean all = false;
+        List<MediaList> listMal = new ArrayList<>();
+        while (!all) {
+            Request request = new Request.Builder()
+                    .url("https://myanimelist.net/animelist/" + usernameMal + "/load.json?offset=" + offset + "&status=7")
+                    //.url("https://api.jikan.moe/v3/user/" + usernameMal + "/animelist/all")
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+                String body = response.body().string();
+                Object obj = JSONValue.parse(body);
 
-            JSONObject jsonObj = (JSONObject) obj;
-            JSONArray array = (JSONArray) jsonObj.get("anime");
-            if (array != null) {
-                for (Object listObj : array) {
-                    listMal.add(fromJSON((JSONObject) listObj));
+                JSONArray array = (JSONArray) obj;
+                if (array != null) {
+                    if (array.size() > 0) {
+                        for (Object listObj : array) {
+                            listMal.add(fromJSON((JSONObject) listObj));
+                        }
+                    } else {
+                        return listMal;
+                    }
                 }
+
+                offset += 300;
+            } catch (IOException e) {
+                e.printStackTrace();
+                all = true;
             }
-            return listMal;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -253,19 +263,19 @@ public class Requests {
 
         Media media = new Media();
         Title title = new Title();
-        title.setRomajiTitle((String) anime.get("title"));
+        title.setRomajiTitle((String) anime.get("anime_title"));
         media.setTitle(title);
         MediaCoverImage coverImage = new MediaCoverImage();
-        String image_url = (String) anime.get("image_url");
+        String image_url = (String) anime.get("anime_image_path");
         coverImage.setExtraLarge(image_url);
         coverImage.setLarge(image_url);
         coverImage.setMedium(image_url);
         media.setCoverImage(coverImage);
-        media.setIdMal(((Long) anime.get("mal_id")).intValue());
+        media.setIdMal(((Long) anime.get("anime_id")).intValue());
 
         mediaList.setMedia(media);
-        mediaList.setProgress(((Long) anime.get("watched_episodes")).intValue());
-        mediaList.setStatus(MediaListStatus.fromJikanId(((Long) anime.get("watching_status")).intValue()));
+        mediaList.setProgress(((Long) anime.get("num_watched_episodes")).intValue());
+        mediaList.setStatus(MediaListStatus.fromJikanId(((Long) anime.get("status")).intValue()));
         mediaList.setScore(((Long) Objects.requireNonNull(anime.get("score"))).floatValue());
 
         return mediaList;
