@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:key="creator"
+        app:summary="Peatral"
+        app:title="Creator" />
+    <Preference
+        app:key="version"
+        app:summary="Version Name"
+        app:title="Version" />
+</PreferenceScreen>

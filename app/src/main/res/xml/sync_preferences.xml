@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreference
+        app:key="notification"
+        app:title="@string/notification_pref"
+        app:defaultValue="true"/>
+    <SwitchPreference
+        app:key="toast"
+        app:title="@string/toast_pref"
+        app:defaultValue="true"/>
+
+    <ListPreference
+        app:key="periodic_sync"
+        app:title="@string/sync_period_title"
+        app:entries="@array/sync_period_entries"
+        app:entryValues="@array/sync_period_values"
+        app:useSimpleSummaryProvider="true"
+        app:defaultValue="none"/>
+</PreferenceScreen>

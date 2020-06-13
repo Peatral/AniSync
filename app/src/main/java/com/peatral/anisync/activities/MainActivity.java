@@ -55,13 +55,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        AppCompatDelegate.setDefaultNightMode(prefs.getBoolean("nightMode", true) ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(Integer.parseInt(prefs.getString("nightMode", String.valueOf(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM))));
+
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -229,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void message(String text, int id) {
-        runOnUiThread(() -> Toast.makeText(this, text, Toast.LENGTH_LONG).show());
+        if (prefs.getBoolean("toast", true)) runOnUiThread(() -> Toast.makeText(this, text, Toast.LENGTH_LONG).show());
         //Snackbar.make(fab, text, Snackbar.LENGTH_LONG).show());//
     }
 

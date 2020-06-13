@@ -13,5 +13,7 @@
     <color name="colorTextLight">#818c99</color>
     <color name="colorTextLighter">#8596a5</color>
     <color name="colorShadowBlue">#00050f</color>
+
+    <color name="colorPreferenceIcon">#8596a5</color>
 </resources>
 

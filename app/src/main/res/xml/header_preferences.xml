@@ -1,0 +1,28 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:title="@string/visuals_header"
+        app:fragment="com.peatral.anisync.activities.SettingsActivity$VisualsFragment"
+        app:key="visuals_header"
+        app:icon="@drawable/ic_visuals_24dp"/>
+
+    <Preference
+        app:title="@string/accounts_header"
+        app:fragment="com.peatral.anisync.activities.SettingsActivity$AccountsFragment"
+        app:key="accounts_header"
+        app:icon="@drawable/ic_accounts_24dp"/>
+
+    <Preference
+        app:title="@string/sync_header"
+        app:fragment="com.peatral.anisync.activities.SettingsActivity$SyncFragment"
+        app:key="sync_header"
+        app:icon="@drawable/ic_sync_24dp"/>
+
+    <Preference
+        app:title="@string/about_header"
+        app:fragment="com.peatral.anisync.activities.SettingsActivity$AboutFragment"
+        app:key="about_header"
+        app:icon="@drawable/ic_about_24dp"/>
+
+</androidx.preference.PreferenceScreen>

@@ -14,6 +14,7 @@
     <color name="colorTextLighter">#8596a5</color>
     <color name="colorShadowBlue">#00050f</color>
 
+    <color name="colorPreferenceIcon">#191d26</color>
 
     <color name="colorCoverImage">#00FFFFFF</color>
     <color name="colorCoverImageSelected">#C1333333</color>

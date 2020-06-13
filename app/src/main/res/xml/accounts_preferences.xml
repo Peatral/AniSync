@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:key="userAniList"
+        app:title="@string/anilist_title"
+        app:summary="@string/anilist_summary"/>
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="mal_use_anilist_name"
+        android:title="@string/mal_use_anilist_title"
+        android:disableDependentsState="true"
+        android:summaryOff="@string/mal_use_anilist_summary_off"
+        android:summaryOn="@string/mal_use_anilist_summary_on"/>
+
+    <EditTextPreference
+        app:dependency="mal_use_anilist_name"
+        app:key="malUsername"
+        app:title="@string/mal_title"/>
+</PreferenceScreen>
